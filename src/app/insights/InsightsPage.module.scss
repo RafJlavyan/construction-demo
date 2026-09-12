@@ -1,0 +1,206 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  padding-top: $header-height;
+  background: $color-bg;
+}
+
+.container {
+  @include container;
+}
+
+.hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid $color-border;
+  background: radial-gradient(circle at 80% 20%, rgba(217, 119, 54, 0.08) 0%, transparent 60%);
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: $color-text-secondary;
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.articlesSection {
+  padding: 6rem 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.articlesList {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.articleCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  display: grid;
+  grid-template-columns: 1fr;
+  transition: all $transition-medium;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1fr 1.4fr;
+  }
+
+  &:hover {
+    border-color: $color-border-bright;
+
+    .articleImg {
+      transform: scale(1.04);
+    }
+
+    .articleTitle {
+      color: $color-accent;
+    }
+  }
+}
+
+.imageCol {
+  position: relative;
+  width: 100%;
+  height: 320px;
+
+  @include respond-to('lg') {
+    height: 100%;
+    min-height: 380px;
+  }
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.articleImg {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 1.25rem;
+  left: 1.25rem;
+  background: rgba(11, 12, 14, 0.85);
+  backdrop-filter: blur(8px);
+  border: 1px solid $color-border-bright;
+  color: $color-accent;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  padding: 0.35rem 0.75rem;
+  text-transform: uppercase;
+}
+
+.contentCol {
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  @include respond-to('lg') {
+    padding: 3.5rem;
+  }
+}
+
+.metaRow {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-tertiary;
+
+  svg {
+    color: $color-accent;
+  }
+}
+
+.articleTitle {
+  font-family: $font-display;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.3;
+  transition: color $transition-fast;
+}
+
+.summary {
+  font-size: 1rem;
+  color: $color-text-primary;
+  line-height: 1.7;
+}
+
+.contentSnippet {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border-left: 2px solid $color-border-bright;
+  padding-left: 1.25rem;
+  margin: 0.5rem 0;
+
+  p {
+    font-size: 0.95rem;
+    color: $color-text-secondary;
+    line-height: 1.6;
+  }
+}
+
+.authorBar {
+  padding-top: 1.25rem;
+  border-top: 1px solid $color-border;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.authorInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.userIcon {
+  color: $color-accent;
+}
+
+.name {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: #ffffff;
+}
+
+.role {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-tertiary;
+}

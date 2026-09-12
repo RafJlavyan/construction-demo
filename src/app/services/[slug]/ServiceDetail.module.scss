@@ -1,0 +1,318 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.serviceDetail {
+  background: $color-bg;
+  padding-top: $header-height;
+}
+
+.container {
+  @include container;
+}
+
+.topNav {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid $color-border;
+  background: rgba(14, 16, 20, 0.6);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.discNumber {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-accent;
+  letter-spacing: 0.12em;
+}
+
+.hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid $color-border;
+  background: radial-gradient(circle at 80% 20%, rgba(217, 119, 54, 0.08) 0%, transparent 60%);
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.tagline {
+  font-size: 1.25rem;
+  color: $color-text-secondary;
+  max-width: 700px;
+  line-height: 1.6;
+}
+
+.overviewSection {
+  padding: 6rem 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.overviewGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.1fr 1.3fr;
+    align-items: center;
+  }
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 440px;
+  border: 1px solid $color-border;
+  overflow: hidden;
+}
+
+.serviceImage {
+  object-fit: cover;
+}
+
+.contentCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.heading {
+  font-family: $font-display;
+  font-size: 2rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.description {
+  font-size: 1.1rem;
+  color: $color-text-secondary;
+  line-height: 1.7;
+}
+
+.standardsBox {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid $color-border;
+}
+
+.standardsLabel {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+}
+
+.standardsBadges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.stdBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border-bright;
+  padding: 0.4rem 0.8rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-primary;
+
+  svg {
+    color: $color-accent;
+  }
+}
+
+.capabilitiesSection {
+  padding: 6rem 0;
+  background: $color-bg-subtle;
+  border-bottom: 1px solid $color-border;
+}
+
+.cardsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.card {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    color: $color-text-secondary;
+    line-height: 1.5;
+  }
+}
+
+.checkIcon {
+  color: $color-accent;
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.projectsSection {
+  padding: 6rem 0;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.sectionTitle {
+  font-family: $font-display;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-secondary;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.projectsGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.projCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: $color-border-bright;
+    transform: translateY(-3px);
+
+    .projImg {
+      transform: scale(1.04);
+    }
+
+    .projTitle {
+      color: $color-accent;
+    }
+  }
+}
+
+.projImgWrap {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.projImg {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.projInfo {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.projCategory {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.projTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: color $transition-fast;
+}
+
+.projLocation {
+  font-size: 0.85rem;
+  color: $color-text-tertiary;
+}

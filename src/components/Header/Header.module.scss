@@ -1,0 +1,555 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all $transition-medium;
+  background: transparent;
+}
+
+// Main Navigation Bar
+.navBar {
+  padding: 1rem 0;
+  transition: all $transition-medium;
+  background: linear-gradient(180deg, rgba(11, 12, 14, 0.85) 0%, rgba(11, 12, 14, 0) 100%);
+
+  .header.scrolled & {
+    padding: 0.75rem 0;
+    background: rgba(11, 12, 14, 0.94);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid $color-border;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.container {
+  @include container-fluid;
+  @include flex-between;
+  gap: 1.5rem;
+}
+
+// Brand Logo
+.logoLink {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.nameRow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.brandName {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.brandBadge {
+  font-family: $font-mono;
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  padding: 2px 5px;
+  background: rgba(217, 119, 54, 0.15);
+  color: $color-accent;
+  border: 1px solid rgba(217, 119, 54, 0.3);
+  border-radius: 2px;
+  line-height: 1;
+}
+
+.brandSub {
+  font-family: $font-mono;
+  font-size: 0.5625rem;
+  letter-spacing: 0.18em;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+}
+
+// Floating Architectural Capsule Navigation
+.capsuleNav {
+  display: none;
+
+  @include respond-to('lg') {
+    display: block;
+  }
+}
+
+.navList {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: rgba(18, 21, 26, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 0.3rem 0.45rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.navItem {
+  position: relative;
+}
+
+.navLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all $transition-fast;
+  position: relative;
+
+  .navNum {
+    font-family: $font-mono;
+    font-size: 0.625rem;
+    color: $color-accent;
+    opacity: 0.75;
+    font-weight: 600;
+  }
+
+  .navText {
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    color: $color-text-secondary;
+    text-transform: uppercase;
+    transition: color $transition-fast;
+  }
+
+  .activeDot {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: $color-accent;
+    box-shadow: 0 0 6px $color-accent;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.06);
+
+    .navText {
+      color: #ffffff;
+    }
+  }
+
+  &.active {
+    background: rgba(217, 119, 54, 0.12);
+    border: 1px solid rgba(217, 119, 54, 0.28);
+
+    .navText {
+      color: #ffffff;
+    }
+  }
+}
+
+// Right Actions & Utilities
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.statusIndicator {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.75rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  border-radius: 4px;
+
+  @include respond-to('xl') {
+    display: flex;
+  }
+}
+
+.statusDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+  animation: pulse-green 2s infinite;
+}
+
+@keyframes pulse-green {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.statusText {
+  display: flex;
+  flex-direction: column;
+}
+
+.statusLabel {
+  font-family: $font-mono;
+  font-size: 0.625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.statusSub {
+  font-family: $font-mono;
+  font-size: 0.5rem;
+  letter-spacing: 0.12em;
+  color: $color-text-tertiary;
+  line-height: 1.1;
+}
+
+.ctaButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 1.15rem;
+  background: $color-accent;
+  color: #ffffff;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  border-radius: 4px;
+  transition: all $transition-fast;
+  border: 1px solid transparent;
+
+  &:hover {
+    background: $color-accent-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 16px $color-accent-glow;
+
+    .ctaIcon {
+      transform: translate(2px, -2px);
+    }
+  }
+
+  .ctaIcon {
+    transition: transform $transition-fast;
+  }
+}
+
+.menuButton {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.55rem 0.85rem;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: $color-border-bright;
+    color: #ffffff;
+  }
+}
+
+.menuButtonText {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  display: none;
+
+  @include respond-to('sm') {
+    display: inline;
+  }
+}
+
+// Global Architectural Directory Drawer
+.drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 1100;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity $transition-medium;
+
+  &.open {
+    opacity: 1;
+    pointer-events: all;
+
+    .drawerPanel {
+      transform: translateY(0);
+    }
+  }
+}
+
+.drawerBackdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(8px);
+}
+
+.drawerPanel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: #0e1014;
+  border-bottom: 1px solid $color-border-bright;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+  padding: 2.5rem clamp(1.5rem, 5vw, 4rem);
+  transform: translateY(-100%);
+  transition: transform $transition-medium;
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.drawerHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 1px solid $color-border;
+  padding-bottom: 1.5rem;
+}
+
+.drawerTag {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.drawerTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
+}
+
+.closeBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-border;
+  color: $color-text-primary;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.12);
+    color: #ffffff;
+  }
+}
+
+.drawerBody {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.2fr 1.2fr 1.4fr;
+  }
+}
+
+.drawerCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.colHeading {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+  border-bottom: 1px solid $color-border;
+  padding-bottom: 0.5rem;
+}
+
+.drawerNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.drawerNavLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  color: $color-text-primary;
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  .drawerNum {
+    font-family: $font-mono;
+    font-size: 0.6875rem;
+    color: $color-accent;
+    margin-right: 0.75rem;
+  }
+
+  .drawerLabel {
+    font-family: $font-mono;
+    font-size: 0.8125rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    flex: 1;
+  }
+
+  .linkArrow {
+    color: $color-text-tertiary;
+    transition: transform $transition-fast;
+  }
+
+  &:hover {
+    background: rgba(217, 119, 54, 0.08);
+    border-color: rgba(217, 119, 54, 0.3);
+    color: #ffffff;
+
+    .linkArrow {
+      transform: translate(2px, -2px);
+      color: $color-accent;
+    }
+  }
+}
+
+.officeItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid $color-border;
+  border-radius: 4px;
+}
+
+.officeCity {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: $color-accent;
+}
+
+.officeAddress {
+  font-size: 0.8125rem;
+  color: $color-text-secondary;
+}
+
+.officePhone {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-tertiary;
+}
+
+.certBadge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 0.85rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid $color-border;
+  border-radius: 4px;
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  letter-spacing: 0.1em;
+  color: $color-text-secondary;
+
+  .certIcon {
+    color: $color-accent;
+    flex-shrink: 0;
+  }
+}
+
+.directContactBox {
+  margin-top: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  padding: 1.25rem;
+  background: rgba(217, 119, 54, 0.05);
+  border: 1px solid rgba(217, 119, 54, 0.2);
+  border-radius: 4px;
+}
+
+.directTag {
+  font-family: $font-mono;
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.directEmail {
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  color: #ffffff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.drawerCtaBtn {
+  margin-top: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: $color-accent;
+  color: #ffffff;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-accent-hover;
+    box-shadow: 0 4px 16px $color-accent-glow;
+  }
+}

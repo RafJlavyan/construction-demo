@@ -1,0 +1,191 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  padding: 7rem 0;
+  background-color: $color-bg;
+  position: relative;
+  border-top: 1px solid $color-border;
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+
+  @include respond-to('md') {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.headingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.viewAllLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: $color-border-bright;
+    transform: translateY(-4px);
+
+    .image {
+      transform: scale(1.05);
+    }
+
+    .articleTitle {
+      color: $color-accent;
+    }
+  }
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.imageWrap {
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+}
+
+.image {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  filter: brightness(0.85);
+}
+
+.categoryBadge {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  background: rgba(11, 12, 14, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid $color-border-bright;
+  color: $color-accent;
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  padding: 0.25rem 0.65rem;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.metaRow {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.metaItem {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-text-tertiary;
+
+  svg {
+    color: $color-accent;
+  }
+}
+
+.articleTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+  transition: color $transition-fast;
+}
+
+.summary {
+  font-size: 0.875rem;
+  color: $color-text-secondary;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.authorRow {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-top: 1.25rem;
+  border-top: 1px solid $color-border;
+}
+
+.authorName {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: $color-text-primary;
+}
+
+.authorRole {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  color: $color-text-tertiary;
+}

@@ -1,0 +1,283 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.footer {
+  background-color: #08090a;
+  border-top: 1px solid $color-border;
+  padding-top: 5rem;
+  padding-bottom: 2.5rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, $color-border-bright, transparent);
+  }
+}
+
+.container {
+  @include container;
+}
+
+.topGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3.5rem;
+  margin-bottom: 5rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: 2fr 1fr 1.2fr 1.6fr;
+    gap: 3rem;
+  }
+}
+
+.brandCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.wordmark {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.brandName {
+  font-family: $font-display;
+  font-size: 1.75rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  color: $color-text-primary;
+  line-height: 1;
+
+  &::after {
+    content: '';
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    background: $color-accent;
+    margin-left: 4px;
+    vertical-align: middle;
+  }
+}
+
+.brandSub {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.22em;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+}
+
+.brandDescription {
+  color: $color-text-secondary;
+  font-size: 0.875rem;
+  line-height: 1.7;
+  max-width: 360px;
+}
+
+.licenseBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid $color-border;
+  padding: 0.5rem 0.75rem;
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: $color-text-secondary;
+  max-width: fit-content;
+}
+
+.licenseIcon {
+  color: $color-accent;
+}
+
+.colTitle {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  color: $color-accent;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
+}
+
+.linkList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+
+  a {
+    font-size: 0.875rem;
+    color: $color-text-secondary;
+    transition: all $transition-fast;
+
+    &:hover {
+      color: $color-text-primary;
+      transform: translateX(4px);
+    }
+  }
+}
+
+.locationList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+
+  li {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+
+    strong {
+      font-size: 0.875rem;
+      color: $color-text-primary;
+      font-weight: 500;
+    }
+
+    span {
+      font-size: 0.8rem;
+      color: $color-text-tertiary;
+    }
+  }
+}
+
+.contactCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.contactText {
+  font-size: 0.875rem;
+  color: $color-text-secondary;
+  line-height: 1.6;
+}
+
+.contactActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contactLink {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+
+  svg {
+    color: $color-accent;
+  }
+
+  &:hover {
+    color: $color-text-primary;
+  }
+}
+
+.footerCta {
+  margin-top: 0.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.85rem 1.25rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid $color-border-bright;
+  color: $color-text-primary;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-accent;
+    border-color: $color-accent;
+    color: #ffffff;
+  }
+}
+
+.bottomBar {
+  border-top: 1px solid $color-border;
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  @include respond-to('md') {
+    flex-direction: row;
+    align-items: center;
+  }
+}
+
+.legalInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.75rem;
+  color: $color-text-tertiary;
+
+  @include respond-to('lg') {
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+  }
+}
+
+.legalLinks {
+  display: flex;
+  gap: 1.25rem;
+
+  a {
+    color: $color-text-tertiary;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-text-secondary;
+    }
+  }
+}
+
+.creatorAttribution {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid $color-border;
+  padding: 0.4rem 1rem;
+}
+
+.creatorLabel {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+}
+
+.creatorBrand {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  text-transform: uppercase;
+}

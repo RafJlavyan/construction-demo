@@ -1,0 +1,170 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  padding: 8rem 0;
+  background-color: $color-bg;
+  position: relative;
+  border-top: 1px solid $color-border;
+}
+
+.container {
+  @include container;
+}
+
+.editorialGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.15fr 1fr;
+    gap: 5rem;
+    align-items: center;
+  }
+}
+
+.manifestoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  background: $color-accent;
+  border-radius: 50%;
+}
+
+.tagText {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.headline {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 3.2vw, 2.65rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.2;
+}
+
+.leadText {
+  font-size: 1.125rem;
+  color: $color-text-primary;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.bodyText {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  font-size: 1rem;
+  color: $color-text-secondary;
+  line-height: 1.7;
+}
+
+.actionRow {
+  padding-top: 1rem;
+}
+
+.linkButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  letter-spacing: 0.12em;
+  color: $color-accent;
+  text-transform: uppercase;
+  border-bottom: 1px solid $color-accent;
+  padding-bottom: 0.35rem;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: #ffffff;
+    border-color: #ffffff;
+    transform: translateX(4px);
+  }
+}
+
+.visualCol {
+  position: relative;
+  width: 100%;
+}
+
+.mainImageWrap {
+  position: relative;
+  width: 100%;
+  height: 520px;
+  border: 1px solid $color-border;
+  overflow: hidden;
+
+  @include respond-to('md') {
+    height: 600px;
+  }
+}
+
+.mainImage {
+  object-fit: cover;
+  filter: brightness(0.85);
+}
+
+.subCard {
+  position: relative;
+  background: $color-bg-card;
+  border: 1px solid $color-border-bright;
+  padding: 2rem;
+  margin-top: -3rem;
+  margin-left: 2rem;
+  z-index: 10;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+
+  @include respond-to('sm') {
+    position: absolute;
+    bottom: -2.5rem;
+    left: -2.5rem;
+    margin: 0;
+    max-width: 380px;
+  }
+}
+
+.subCardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.subCardTag {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.subCardQuote {
+  font-family: $font-display;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.4;
+}
+
+.subCardAuthor {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-text-tertiary;
+}

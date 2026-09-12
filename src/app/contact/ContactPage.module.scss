@@ -1,0 +1,178 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  padding-top: $header-height;
+  background: $color-bg;
+}
+
+.container {
+  @include container;
+}
+
+.hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid $color-border;
+  background: radial-gradient(circle at 80% 20%, rgba(217, 119, 54, 0.08) 0%, transparent 60%);
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: $color-text-secondary;
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.formSection {
+  padding: 6rem 0;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.4fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.formCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.formHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.formTitle {
+  font-family: $font-display;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.formDesc {
+  font-size: 1rem;
+  color: $color-text-secondary;
+  line-height: 1.6;
+}
+
+.officesCol {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.officesHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.officesTitle {
+  font-family: $font-display;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.officesDesc {
+  font-size: 0.95rem;
+  color: $color-text-secondary;
+}
+
+.officesList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.officeCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+  transition: border-color $transition-fast;
+
+  &:hover {
+    border-color: $color-border-bright;
+  }
+}
+
+.officeCity {
+  font-family: $font-display;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.25rem;
+}
+
+.officeDetail {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.85rem;
+  color: $color-text-secondary;
+}
+
+.officeIcon {
+  color: $color-accent;
+  flex-shrink: 0;
+}
+
+.generalContact {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.generalTitle {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: $color-accent;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.generalEmail, .generalPhone {
+  font-family: $font-mono;
+  font-size: 0.9rem;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: #ffffff;
+  }
+}

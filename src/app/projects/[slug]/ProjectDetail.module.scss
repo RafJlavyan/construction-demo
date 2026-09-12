@@ -1,0 +1,619 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.caseStudy {
+  background: $color-bg;
+  padding-top: $header-height;
+}
+
+.container {
+  @include container;
+}
+
+.topNav {
+  padding: 1.25rem 0;
+  border-bottom: 1px solid $color-border;
+  background: rgba(14, 16, 20, 0.6);
+
+  .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.backLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.projectRef {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: $color-text-tertiary;
+}
+
+.heroSection {
+  position: relative;
+  min-height: 70vh;
+  display: flex;
+  align-items: flex-end;
+  padding: 4rem 0;
+}
+
+.heroImageWrap {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroImage {
+  object-fit: cover;
+  filter: brightness(0.65) contrast(1.05);
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(11, 12, 14, 0.2) 0%, rgba(11, 12, 14, 0.95) 100%);
+}
+
+.heroContent {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.heroMeta {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.categoryBadge {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: #ffffff;
+  background: $color-accent;
+  padding: 0.35rem 0.85rem;
+  text-transform: uppercase;
+}
+
+.statusBadge {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: $color-text-secondary;
+  background: rgba(11, 12, 14, 0.8);
+  border: 1px solid $color-border;
+  padding: 0.35rem 0.85rem;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.8vw, 3.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-bottom: 1.25rem;
+}
+
+.shortDesc {
+  font-size: clamp(1.05rem, 1.5vw, 1.25rem);
+  color: $color-text-secondary;
+  max-width: 800px;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.specStrip {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(18, 20, 24, 0.85);
+  border: 1px solid $color-border;
+  backdrop-filter: blur(12px);
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.stripItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.stripIcon {
+  color: $color-accent;
+  margin-top: 3px;
+}
+
+.stripLabel {
+  display: block;
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.15em;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+}
+
+.stripValue {
+  display: block;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 2px;
+}
+
+.narrativeSection {
+  padding: 7rem 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.narrativeGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 4rem;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 5rem;
+  }
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background: $color-accent;
+  border-radius: 50%;
+}
+
+.sectionHeading {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+}
+
+.overviewText {
+  font-size: 1.15rem;
+  color: $color-text-primary;
+  line-height: 1.7;
+  margin-bottom: 2.5rem;
+}
+
+.challengeBox, .solutionBox {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+
+  p {
+    font-size: 1rem;
+    color: $color-text-secondary;
+    line-height: 1.65;
+  }
+}
+
+.solutionBox {
+  border-left: 3px solid $color-accent;
+}
+
+.subHeading {
+  font-family: $font-mono;
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  color: $color-accent;
+  text-transform: uppercase;
+  margin-bottom: 0.75rem;
+}
+
+.specsCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 2.5rem;
+}
+
+.specsCardTitle {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid $color-border;
+}
+
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.specRow {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+  padding-bottom: 0.75rem;
+}
+
+.specKey {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: $color-text-tertiary;
+  text-transform: uppercase;
+}
+
+.specVal {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #ffffff;
+}
+
+.assuranceNote {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-text-secondary;
+}
+
+.shieldIcon {
+  color: $color-accent;
+  flex-shrink: 0;
+}
+
+.gallerySection {
+  padding: 7rem 0;
+  background: $color-bg-subtle;
+  border-bottom: 1px solid $color-border;
+}
+
+.galleryHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 3.5rem;
+
+  @include respond-to('md') {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.galleryTitle {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.gallerySub {
+  font-size: 0.95rem;
+  color: $color-text-secondary;
+}
+
+.galleryCount {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: $color-accent;
+}
+
+.galleryGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.galleryItem {
+  cursor: pointer;
+  border: 1px solid $color-border;
+  background: #111;
+  overflow: hidden;
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: $color-accent;
+
+    .galleryImage {
+      transform: scale(1.05);
+    }
+
+    .galleryHoverCue {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  &.galleryHeroItem {
+    @include respond-to('lg') {
+      grid-column: span 2;
+    }
+  }
+}
+
+.galleryImgWrap {
+  position: relative;
+  width: 100%;
+  height: 320px;
+}
+
+.galleryImage {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.galleryHoverCue {
+  position: absolute;
+  inset: 0;
+  background: rgba(11, 12, 14, 0.65);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  color: #ffffff;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all $transition-fast;
+}
+
+.milestoneSection {
+  padding: 7rem 0;
+  border-bottom: 1px solid $color-border;
+}
+
+.milestoneHeader {
+  margin-bottom: 3.5rem;
+}
+
+.milestoneTitle {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.5vw, 2.75rem);
+  font-weight: 800;
+  color: #ffffff;
+  margin-top: 0.5rem;
+}
+
+.milestoneTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  position: relative;
+  padding-left: 2rem;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 8px;
+    width: 2px;
+    background: $color-border;
+  }
+}
+
+.milestoneItem {
+  display: flex;
+  gap: 2rem;
+  position: relative;
+
+  &.completed {
+    .mPoint {
+      color: $color-accent;
+    }
+  }
+}
+
+.mPoint {
+  position: absolute;
+  left: -2rem;
+  top: 4px;
+  transform: translateX(-50%);
+  background: $color-bg;
+  color: $color-text-tertiary;
+}
+
+.mDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 2px solid $color-border-bright;
+  background: $color-bg;
+}
+
+.mContent {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 1.75rem 2rem;
+  flex-grow: 1;
+}
+
+.mMeta {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.mDate {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-accent;
+  font-weight: 600;
+}
+
+.mStatus {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  color: $color-text-tertiary;
+}
+
+.mPhase {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.5rem;
+}
+
+.mDesc {
+  font-size: 0.95rem;
+  color: $color-text-secondary;
+  line-height: 1.6;
+}
+
+.relatedSection {
+  padding: 6rem 0;
+}
+
+.relatedHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 3rem;
+}
+
+.relatedTitle {
+  font-family: $font-display;
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.allLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-secondary;
+  transition: color $transition-fast;
+
+  &:hover {
+    color: $color-accent;
+  }
+}
+
+.relatedGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.relCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: $color-border-bright;
+    transform: translateY(-3px);
+
+    .relImage {
+      transform: scale(1.04);
+    }
+
+    .relName {
+      color: $color-accent;
+    }
+  }
+}
+
+.relImageWrap {
+  position: relative;
+  width: 100%;
+  height: 260px;
+  overflow: hidden;
+}
+
+.relImage {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+}
+
+.relBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.relCategory {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.relName {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+  transition: color $transition-fast;
+}
+
+.relLocation {
+  font-size: 0.85rem;
+  color: $color-text-tertiary;
+}

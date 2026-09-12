@@ -1,0 +1,44 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  padding-top: $header-height;
+  background: $color-bg;
+}
+
+.container {
+  @include container;
+}
+
+.hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid $color-border;
+  background: radial-gradient(circle at 75% 25%, rgba(217, 119, 54, 0.08) 0%, transparent 60%);
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: $color-text-secondary;
+  max-width: 680px;
+  line-height: 1.6;
+}

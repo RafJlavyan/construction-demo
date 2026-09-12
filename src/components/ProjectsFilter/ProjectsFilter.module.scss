@@ -1,0 +1,265 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  padding: 7rem 0;
+  background-color: $color-bg-subtle;
+  position: relative;
+  border-top: 1px solid $color-border;
+  border-bottom: 1px solid $color-border;
+}
+
+.container {
+  @include container-wide;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  margin-bottom: 3.5rem;
+
+  @include respond-to('lg') {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+  }
+}
+
+.headingBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.categoryTag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.sectionTitle {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  letter-spacing: -0.015em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.sectionDesc {
+  color: $color-text-secondary;
+  font-size: 1rem;
+  max-width: 500px;
+}
+
+.filterTabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  padding: 0.4rem;
+  border: 1px solid $color-border;
+  width: fit-content;
+}
+
+.tabBtn {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $color-text-secondary;
+  padding: 0.5rem 1rem;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-text-primary;
+  }
+
+  &.activeTab {
+    background: $color-accent;
+    color: #ffffff;
+    font-weight: 600;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.card {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  transition: all $transition-medium;
+  display: flex;
+  flex-direction: column;
+
+  &:hover {
+    border-color: $color-border-bright;
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+
+    .cardImage {
+      transform: scale(1.05);
+    }
+
+    .hoverAction {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .cardTitle {
+      color: $color-accent;
+    }
+  }
+
+  &.cardWide {
+    @include respond-to('xl') {
+      grid-column: span 2;
+
+      .imageContainer {
+        height: 400px;
+      }
+    }
+  }
+}
+
+.cardLink {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  text-decoration: none;
+}
+
+.imageContainer {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+  background: #111;
+}
+
+.cardImage {
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: brightness(0.9);
+}
+
+.imageDarkener {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, transparent 40%, rgba(15, 17, 21, 0.8) 100%);
+}
+
+.hoverAction {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: rgba(11, 12, 14, 0.8);
+  backdrop-filter: blur(8px);
+  border: 1px solid $color-border-bright;
+  color: #ffffff;
+  padding: 0.4rem 0.8rem;
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  letter-spacing: 0.12em;
+  opacity: 0;
+  transform: translateY(-8px);
+  transition: all $transition-fast;
+}
+
+.statusBadge {
+  position: absolute;
+  bottom: 1.25rem;
+  left: 1.25rem;
+  background: rgba(11, 12, 14, 0.75);
+  backdrop-filter: blur(6px);
+  border: 1px solid $color-border;
+  padding: 0.3rem 0.75rem;
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  color: $color-text-secondary;
+  text-transform: uppercase;
+}
+
+.cardBody {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  flex-grow: 1;
+}
+
+.metaTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.category {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.area {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-tertiary;
+}
+
+.cardTitle {
+  font-family: $font-display;
+  font-size: 1.35rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+  line-height: 1.25;
+  transition: color $transition-fast;
+}
+
+.cardSnippet {
+  font-size: 0.875rem;
+  color: $color-text-secondary;
+  line-height: 1.6;
+  flex-grow: 1;
+}
+
+.metaBottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.25rem;
+  border-top: 1px solid $color-border;
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-text-tertiary;
+}
+
+.location {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.pinIcon {
+  color: $color-accent;
+}

@@ -1,0 +1,135 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.section {
+  padding: 7rem 0;
+  background-color: $color-bg-subtle;
+  position: relative;
+  border-top: 1px solid $color-border;
+}
+
+.container {
+  @include container;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  max-width: 800px;
+  margin-bottom: 4rem;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.tagDot {
+  width: 6px;
+  height: 6px;
+  background: $color-accent;
+  border-radius: 50%;
+}
+
+.tagText {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 2.8vw, 2.4rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  color: $color-text-secondary;
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.matrixGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @include respond-to('md') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('xl') {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.pillarCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: $color-border-bright;
+    transform: translateY(-3px);
+
+    .iconCircle {
+      border-color: $color-accent;
+      color: $color-accent;
+    }
+  }
+}
+
+.pillarTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.iconCircle {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: 1px solid $color-border;
+  background: rgba(255, 255, 255, 0.03);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-text-primary;
+  transition: all $transition-fast;
+}
+
+.statBadge {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: $color-accent;
+  background: rgba(217, 119, 54, 0.1);
+  padding: 0.3rem 0.65rem;
+  border: 1px solid rgba(217, 119, 54, 0.3);
+}
+
+.pillarTitle {
+  font-family: $font-display;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.01em;
+}
+
+.pillarDesc {
+  font-size: 0.9rem;
+  color: $color-text-secondary;
+  line-height: 1.6;
+}

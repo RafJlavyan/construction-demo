@@ -1,0 +1,145 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.page {
+  padding-top: $header-height;
+  background: $color-bg;
+}
+
+.container {
+  @include container;
+}
+
+.hero {
+  padding: 6rem 0 4rem;
+  border-bottom: 1px solid $color-border;
+  background: radial-gradient(circle at 80% 20%, rgba(217, 119, 54, 0.08) 0%, transparent 60%);
+}
+
+.tag {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.title {
+  font-family: $font-display;
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  line-height: 1.15;
+  margin-top: 0.75rem;
+  margin-bottom: 1.25rem;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: $color-text-secondary;
+  max-width: 680px;
+  line-height: 1.6;
+}
+
+.leadershipSection {
+  padding: 7rem 0;
+  border-bottom: 1px solid $color-border;
+  background: $color-bg-subtle;
+}
+
+.secHeader {
+  margin-bottom: 4rem;
+}
+
+.secTitle {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 2.8vw, 2.25rem);
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.015em;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.secDesc {
+  font-size: 1rem;
+  color: $color-text-secondary;
+}
+
+.leadershipGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to('sm') {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include respond-to('lg') {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.leaderCard {
+  background: $color-bg-card;
+  border: 1px solid $color-border;
+  transition: all $transition-medium;
+
+  &:hover {
+    border-color: $color-border-bright;
+    transform: translateY(-4px);
+
+    .leaderImg {
+      transform: scale(1.05);
+    }
+  }
+}
+
+.leaderImgWrap {
+  position: relative;
+  width: 100%;
+  height: 320px;
+  overflow: hidden;
+}
+
+.leaderImg {
+  object-fit: cover;
+  transition: transform 0.8s ease;
+  filter: grayscale(25%);
+}
+
+.leaderBody {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.leaderName {
+  font-family: $font-display;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.leaderRole {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  color: $color-accent;
+  font-weight: 600;
+}
+
+.leaderCreds {
+  font-family: $font-mono;
+  font-size: 0.65rem;
+  color: $color-text-tertiary;
+  margin-bottom: 0.5rem;
+}
+
+.leaderBio {
+  font-size: 0.875rem;
+  color: $color-text-secondary;
+  line-height: 1.5;
+}

@@ -1,0 +1,271 @@
+@use '@/styles/variables' as *;
+@use '@/styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding-top: calc(#{$header-height} + 4rem);
+  padding-bottom: 4rem;
+  overflow: hidden;
+  background-color: #090a0c;
+}
+
+.visualContainer {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.heroBgImage {
+  object-fit: cover;
+  object-position: center 30%;
+  filter: brightness(0.65) contrast(1.1);
+  transform: scale(1.02);
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 30%, rgba(217, 119, 54, 0.12) 0%, transparent 60%),
+              linear-gradient(180deg, rgba(11, 12, 14, 0.4) 0%, rgba(11, 12, 14, 0.75) 60%, rgba(11, 12, 14, 0.98) 100%);
+}
+
+.meshGrid {
+  position: absolute;
+  inset: 0;
+  background-size: 100px 100px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+  mask-image: radial-gradient(circle at 50% 60%, black, transparent 80%);
+}
+
+.container {
+  @include container-fluid;
+  position: relative;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5rem;
+}
+
+.heroHeaderMeta {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @include respond-to('md') {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.tickerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.35rem 0.85rem;
+  background: rgba(18, 20, 24, 0.7);
+  backdrop-filter: blur(10px);
+  border: 1px solid $color-border-bright;
+  width: fit-content;
+}
+
+.pulseDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $color-accent;
+  box-shadow: 0 0 10px $color-accent;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+.tickerText {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  color: $color-text-primary;
+  text-transform: uppercase;
+}
+
+.coordinates {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  letter-spacing: 0.12em;
+  color: $color-text-tertiary;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.slash {
+  color: $color-accent;
+}
+
+.headlineBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+}
+
+.mainTitle {
+  font-family: $font-display;
+  font-size: clamp(2rem, 4.2vw, 3.65rem);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: $color-text-primary;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.titleLine {
+  color: #ffffff;
+}
+
+.titleLineAccent {
+  color: $color-accent;
+  font-weight: 700;
+}
+
+.subContent {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+
+  @include respond-to('lg') {
+    grid-template-columns: 1.5fr 1fr;
+    align-items: flex-end;
+  }
+}
+
+.subDescription {
+  font-size: 1.0625rem;
+  color: $color-text-secondary;
+  line-height: 1.65;
+  max-width: 640px;
+}
+
+.heroCtaGroup {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+
+  @include respond-to('lg') {
+    justify-content: flex-end;
+  }
+}
+
+.primaryBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: $color-accent;
+  color: #ffffff;
+  padding: 1rem 1.85rem;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-accent-hover;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px $color-accent-glow;
+  }
+}
+
+.secondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  padding: 1rem 1.85rem;
+  border: 1px solid $color-border-bright;
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(8px);
+  color: $color-text-primary;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: all $transition-fast;
+
+  &:hover {
+    border-color: $color-text-primary;
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+.technicalRibbon {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  padding: 2rem;
+  background: rgba(16, 18, 22, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid $color-border;
+
+  @include respond-to('md') {
+    grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 3rem;
+  }
+}
+
+.ribbonItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.ribbonValue {
+  font-family: $font-display;
+  font-size: clamp(1.75rem, 2.5vw, 2.5rem);
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.ribbonLabel {
+  font-family: $font-mono;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: $color-accent;
+  text-transform: uppercase;
+}
+
+.ribbonSub {
+  font-family: $font-mono;
+  font-size: 0.625rem;
+  letter-spacing: 0.1em;
+  color: $color-text-tertiary;
+}
+
+.ribbonDivider {
+  display: none;
+  width: 1px;
+  height: 48px;
+  background: $color-border;
+
+  @include respond-to('md') {
+    display: block;
+  }
+}
